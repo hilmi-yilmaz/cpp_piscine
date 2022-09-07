@@ -9,9 +9,9 @@ class PhoneBook {
 
     public:
 
-        int     total_contacts;
-        int     idx_pointer;
-        Contact contacts[8];
+        size_t	total_contacts;
+        size_t	idx_pointer;
+        Contact	contacts[8];
 
         PhoneBook( void );
         ~PhoneBook( void );
@@ -21,6 +21,7 @@ class PhoneBook {
 
 	private:
 		void	max_print(std::string string);
+		bool	is_wrong_contact(Contact& contact);
 
 };
 

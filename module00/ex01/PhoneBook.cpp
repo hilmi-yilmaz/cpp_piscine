@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <cctype>
 #include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook( void ) {
@@ -18,10 +19,16 @@ PhoneBook::~PhoneBook( void ) {
 
 void	PhoneBook::add(Contact& contact) {
 
+	// check if all the data inside of the contact are not empty, or spaces only
+	if (this->is_wrong_contact(contact))
+	{
+		std::cout << "One or more input fields are incorrect. Contact is not saved in the phonebook." << std::endl;
+		return;
+	}
     this->contacts[this->idx_pointer] = contact;
     this->idx_pointer += 1;
     this->total_contacts += 1;
-    return;
+	std::cout << "Contact added to phonebook!" << std::endl;
 }
 
 void	PhoneBook::max_print(std::string string) {
@@ -40,6 +47,26 @@ void	PhoneBook::max_print(std::string string) {
 	}
 }
 
+bool	is_empty_input(std::string string) {
+
+	for (std::string::size_type i = 0; i < string.size(); i++) {
+		if (isspace(string[i]) == false)
+			return (false);
+	}
+	return (true);
+}
+
+bool	PhoneBook::is_wrong_contact(Contact& contact) {
+
+	if (is_empty_input(contact.first_name) ||
+		is_empty_input(contact.last_name) ||
+		is_empty_input(contact.nick_name) ||
+		is_empty_input(contact.phone_number) ||
+		is_empty_input(contact.darkest_secret))
+		return (true);
+	return (false);
+}
+
 void	PhoneBook::search(void) {
 
 	std::cout << std::setw(10) << std::left << "index" << " | ";
@@ -47,7 +74,7 @@ void	PhoneBook::search(void) {
 	std::cout << std::setw(10) << std::left << "last name" << " | ";
 	std::cout << std::setw(10) << std::left << "nickname" << std::endl;
 
-	for (int i = 0; i < this->total_contacts; i++) {
+	for (size_t i = 0; i < this->total_contacts; i++) {
 		std::cout << std::setw(10) << std::left << i << " | ";
 		this->max_print(this->contacts[i].first_name);
 		std::cout << " | ";
