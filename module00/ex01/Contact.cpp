@@ -5,32 +5,20 @@
 
 Contact::Contact( void ) {
 
-    // std::cout << "Contact Constructor called" << std::endl;
+    std::cout << "Contact Constructor called" << std::endl;
     return;
 }
 
 Contact::~Contact( void ) {
-    // std::cout << "Contact destructor called" << std::endl;
+    std::cout << "Contact destructor called" << std::endl;
     return;
 }
 
-// Overload the << operator. I will use this to print attributes of the objects
-// std::ostream& operator<<(std::ostream &os, const Contact& contact) {
+void Contact::print_contact( void ) {
 
-//     return os   << "("
-//                 << contact.first_name << ", "
-//                 << contact.last_name << ", "
-//                 << contact.nick_name << ", "
-//                 << contact.phone_number << ", "
-//                 << contact.darkest_secret
-//                 << ")";
-// }
-
-std::ostream& operator<<(std::ostream &os, const Contact& contact) {
-
-    return os  	<< std::setw(18) << "First name:" << contact.first_name << "\n"
-               	<< std::setw(18) << "Last name:" << contact.last_name << "\n"
-              	<< std::setw(18)  << "Nick name:" << contact.nick_name << "\n"
-              	<< std::setw(18) 	<< "Phone number:"  << contact.phone_number << "\n"
-              	<< std::setw(18) 	<< "Darkest Secret:"  << contact.darkest_secret << "\n";
+    std::cout << std::setw(18) << "First name:" << this->first_name << "\n";
+	std::cout << std::setw(18) << "Last name:" << this->last_name << "\n";
+	std::cout << std::setw(18) << "Nick name:" << this->nick_name << "\n";
+	std::cout << std::setw(18) << "Phone number:"  << this->phone_number << "\n";
+	std::cout << std::setw(18) << "Darkest Secret:"  << this->darkest_secret << "\n";
 }

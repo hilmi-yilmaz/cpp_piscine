@@ -7,6 +7,9 @@ PhoneBook::PhoneBook( void ) {
 
     this->total_contacts = 0;
     this->idx_pointer = 0;
+	this->oldest = 0;
+	std::memset(this->contacts, 0, sizeof(this->contacts));
+
     // std::cout << "PhoneBook Constructor called" << std::endl;
     return;
 }
@@ -19,15 +22,27 @@ PhoneBook::~PhoneBook( void ) {
 
 void	PhoneBook::add(Contact& contact) {
 
-	// check if all the data inside of the contact are not empty, or spaces only
+	// Check for empty inputs
 	if (this->is_wrong_contact(contact))
 	{
 		std::cout << "One or more input fields are incorrect. Contact is not saved in the phonebook." << std::endl;
 		return;
 	}
-    this->contacts[this->idx_pointer] = contact;
-    this->idx_pointer += 1;
-    this->total_contacts += 1;
+
+	// Check if the phonebook is full: if so, oldest person gets replaced by new contact
+	if (this->total_contacts == 8) {
+		this->contacts[this->oldest] = &contact;
+		if (this->oldest == 7) {
+			this->oldest = 0;
+		} else {
+			this->oldest += 1;
+		}
+	}
+	else {
+		this->contacts[this->idx_pointer] = &contact;
+		this->idx_pointer += 1;
+		this->total_contacts += 1;
+	}
 	std::cout << "Contact added to phonebook!" << std::endl;
 }
 
@@ -76,11 +91,11 @@ void	PhoneBook::search(void) {
 
 	for (size_t i = 0; i < this->total_contacts; i++) {
 		std::cout << std::setw(10) << std::left << i << " | ";
-		this->max_print(this->contacts[i].first_name);
+		this->max_print(this->contacts[i]->first_name);
 		std::cout << " | ";
-		this->max_print(this->contacts[i].last_name);
+		this->max_print(this->contacts[i]->last_name);
 		std::cout << " | ";
-		this->max_print(this->contacts[i].nick_name);
+		this->max_print(this->contacts[i]->nick_name);
 		std::cout << std::endl;
 	}
 }

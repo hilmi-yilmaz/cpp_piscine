@@ -71,8 +71,6 @@ int main() {
     contact7.darkest_secret = "7";
     phonebook.add(contact7);
 
-
-
 	std::cout << "Enter ADD, SEARCH or EXIT\n";
 	while (true) {
 		
@@ -103,9 +101,9 @@ int main() {
 
 		} else if (input == "SEARCH") {
 
-			std::string	index_str;
-
 			phonebook.search();
+
+			std::string	index_str;
 			std::cout << "Choose an index: ";
 			getline(std::cin, index_str);
 
@@ -134,8 +132,9 @@ int main() {
 			if (index_int < 0 || index_int >= (int)phonebook.idx_pointer) {
 				std::cout << "The index does not exist in the phonebook! Try another one." << std::endl;
 			} else {
-				std::cout << phonebook.contacts[index_int];
+				phonebook.contacts[index_int]->print_contact();
 			}
+
 		} else if (input == "EXIT") {
 			break;
 		}

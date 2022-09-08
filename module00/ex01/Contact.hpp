@@ -15,7 +15,7 @@ class Contact {
         Contact( void );
         ~Contact( void );
 
-        friend std::ostream& operator<<(std::ostream &s, const Contact&);
+		void	print_contact( void );
 };
 
 #endif

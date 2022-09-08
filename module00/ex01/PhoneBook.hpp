@@ -1,5 +1,3 @@
-
-
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
@@ -11,7 +9,9 @@ class PhoneBook {
 
         size_t	total_contacts;
         size_t	idx_pointer;
-        Contact	contacts[8];
+		size_t	oldest;
+        Contact	*contacts[8];
+		// Contact contacts[8];
 
         PhoneBook( void );
         ~PhoneBook( void );
