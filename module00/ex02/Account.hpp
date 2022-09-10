@@ -23,32 +23,32 @@ public:
 
 	typedef Account		t;
 
-	// static int	getNbAccounts( void );
+	static int	getNbAccounts( void );
 	static int	getTotalAmount( void );
-	// static int	getNbDeposits( void );
-	// static int	getNbWithdrawals( void );
-	// static void	displayAccountsInfos( void );
+	static int	getNbDeposits( void );
+	static int	getNbWithdrawals( void );
+	static void	displayAccountsInfos( void );
 
 	Account( int initial_deposit );
 	~Account( void );
 
-	// void	makeDeposit( int deposit );
+	void	makeDeposit( int deposit );
 	// bool	makeWithdrawal( int withdrawal );
 	// int		checkAmount( void ) const;
-	// void	displayStatus( void ) const;
+	void	displayStatus( void ) const;	// because const, cannot change member variable of this class
 
 
 private:
 
-	static int	_totalAmount;
-	static int	_nbAccounts;
+	static int	_totalAmount;				// Done
+	static int	_nbAccounts;				// Done
 	static int	_totalNbDeposits;
 	static int	_totalNbWithdrawals;
 
 	// static void	_displayTimestamp( void );
 
-	int				_accountIndex;
-	int				_amount;
+	int				_accountIndex;			// DONE
+	int				_amount;				// DONE
 	int				_nbDeposits;
 	int				_nbWithdrawals;
 
