@@ -33,7 +33,7 @@ public:
 	~Account( void );
 
 	void	makeDeposit( int deposit );
-	// bool	makeWithdrawal( int withdrawal );
+	bool	makeWithdrawal( int withdrawal );
 	// int		checkAmount( void ) const;
 	void	displayStatus( void ) const;	// because const, cannot change member variable of this class
 
@@ -45,7 +45,7 @@ private:
 	static int	_totalNbDeposits;
 	static int	_totalNbWithdrawals;
 
-	// static void	_displayTimestamp( void );
+	static void	_displayTimestamp( void );
 
 	int				_accountIndex;			// DONE
 	int				_amount;				// DONE
