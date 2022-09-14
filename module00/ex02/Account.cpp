@@ -33,6 +33,7 @@ Account::Account( int initial_deposit) : _amount(initial_deposit) {
 
 Account::~Account() {
 
+	_displayTimestamp();
 	std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";closed" <<std::endl;
 }
 
@@ -59,10 +60,12 @@ int	Account::getNbWithdrawals( void ) {
 }
 
 void	Account::displayAccountsInfos( void ) {
+	_displayTimestamp();
 	std::cout << "accounts:" << Account::getNbAccounts() << ";total:" << Account::getTotalAmount() << ";deposits:" << Account::getNbDeposits() << ";withdrawals:" << Account::getNbWithdrawals() << std::endl;
 }
 
 void	Account::displayStatus( void ) const {
+	_displayTimestamp();
 	std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";deposits:" << _nbDeposits << ";withdrawals:" << _nbWithdrawals << std::endl;
 }
 
@@ -76,6 +79,7 @@ void	Account::makeDeposit( int deposit ) {
 	_nbDeposits++;
 	_totalAmount += deposit;
 
+	_displayTimestamp();
 	std::cout << "index:" << _accountIndex << ";p_amount:" << p_amount << ";deposit:" << deposit << ";amount:" << _amount << ";nb_deposits:" << _nbDeposits << std::endl;
 }
 
@@ -84,6 +88,7 @@ bool	Account::makeWithdrawal( int withdrawal ) {
 	int	p_amount = _amount;
 
 	if (_amount - withdrawal < 0) {
+		_displayTimestamp();
 		std::cout << "index:" << _accountIndex << ";p_amount:" << p_amount << ";withdrawal:" << "refused" << std::endl;
 		return (false);
 	}
@@ -93,15 +98,22 @@ bool	Account::makeWithdrawal( int withdrawal ) {
 	_nbWithdrawals++;
 	_totalAmount -= withdrawal;
 
+	_displayTimestamp();
 	std::cout << "index:" << _accountIndex << ";p_amount:" << p_amount << ";withdrawal:" << withdrawal << ";amount:" << _amount << ";nb_withdrawals:" << _nbWithdrawals << std::endl;
 	return (true);
+}
 
+int	Account::checkAmount( void ) const {
+	return _amount;
 }
 
 void	Account::_displayTimestamp( void ) {
 
+	char formatted_time_string[16];
 	std::time_t current_time = std::time(nullptr);
 
-	std::cout << current_time;
-
+	formatted_time_string[15] = '\0';
+	std::strftime(formatted_time_string, sizeof(formatted_time_string), "%Y%m%d_%H%M%S", std::localtime(&current_time));
+	
+	std::cout << "[" << formatted_time_string << "] ";
 }
