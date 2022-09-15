@@ -1,6 +1,10 @@
+#include <string>
 #include "Weapon.hpp"
 
 Weapon::Weapon( void ) {
+}
+
+Weapon::Weapon( std::string type ) : type(type) {
 }
 
 Weapon::~Weapon( void ) {

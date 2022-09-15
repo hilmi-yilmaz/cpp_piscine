@@ -2,13 +2,10 @@ CC = clang++
 CFLAGS = -Wall -Wextra -Werror -Wpedantic -std=c++98
 
 SRC_FILES = main.cpp \
-			Weapon.cpp \
-			HumanA.cpp \
-			HumanB.cpp
 
 OBJ_FILES = $(SRC_FILES:%.cpp=%.o)
 
-NAME = ex03
+NAME = ex04
 
 all: $(NAME)
 
