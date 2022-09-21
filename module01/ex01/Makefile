@@ -9,7 +9,7 @@ HEADER_FILES = Zombie.hpp
 
 OBJ_FILES = $(SRC_FILES:%.cpp=%.o)
 
-NAME = zombie
+NAME = ex01
 
 all: $(NAME)
 

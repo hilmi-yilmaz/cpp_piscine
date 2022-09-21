@@ -2,15 +2,11 @@ CC = clang++
 CFLAGS = -Wall -Wextra -Werror -Wpedantic -std=c++98
 
 SRC_FILES = main.cpp \
-			Zombie.cpp \
-			newZombie.cpp \
-			randomChump.cpp
-
-HEADER_FILES = Zombie.hpp
+			Harl.cpp
 
 OBJ_FILES = $(SRC_FILES:%.cpp=%.o)
 
-NAME = ex00
+NAME = ex05
 
 all: $(NAME)
 
@@ -20,13 +16,13 @@ run: all
 $(NAME): $(OBJ_FILES)
 	$(CC) $(CFLAGS) $^ -o $@
 
-%.o: %.cpp $(HEADER_FILES)
+%.o: %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ_FILES)
 
 fclean: clean
-	rm $(NAME)
+	rm -f $(NAME)
 
 re: fclean all

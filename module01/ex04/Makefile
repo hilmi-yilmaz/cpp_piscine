@@ -10,7 +10,7 @@ NAME = ex04
 all: $(NAME)
 
 run: all
-	./$(NAME)
+	./$(NAME) text.txt hilmi ali
 
 $(NAME): $(OBJ_FILES)
 	$(CC) $(CFLAGS) $^ -o $@

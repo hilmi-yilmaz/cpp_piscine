@@ -5,7 +5,7 @@ SRC_FILES = main.cpp
 
 OBJ_FILES = $(SRC_FILES:%.cpp=%.o)
 
-NAME = ref
+NAME = ex02
 
 all: $(NAME)
 
