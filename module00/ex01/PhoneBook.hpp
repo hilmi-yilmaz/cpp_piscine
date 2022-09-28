@@ -7,21 +7,23 @@ class PhoneBook {
 
     public:
 
-        size_t	total_contacts;
-        size_t	idx_pointer;
-		size_t	oldest;
-        Contact	*contacts[8];
-		// Contact contacts[8];
-
         PhoneBook( void );
         ~PhoneBook( void );
         
         void    add(Contact& contact);
         void    search(void);
+		size_t	get_total_contacts( void );
 
 	private:
-		void	max_print(std::string string);
-		bool	is_wrong_contact(Contact& contact);
+
+        size_t	_total_contacts;
+        size_t	_idx_pointer;
+		size_t	_oldest;
+        Contact	*_contacts[8];
+
+		void	_max_print(std::string string);
+		bool	_is_wrong_contact(Contact& contact);
+		void	_print_contact(std::string index_str);
 
 };
 

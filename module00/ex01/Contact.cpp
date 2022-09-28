@@ -1,16 +1,11 @@
-
 #include <iostream>
 #include <iomanip>
 #include "Contact.hpp"
 
 Contact::Contact( void ) {
-
-    std::cout << "Contact Constructor called" << std::endl;
-    return;
 }
 
 Contact::~Contact( void ) {
-    std::cout << "Contact destructor called" << std::endl;
     return;
 }
 

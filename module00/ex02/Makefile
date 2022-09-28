@@ -1,13 +1,12 @@
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC_FILES = PhoneBook.cpp \
-			Contact.cpp \
-			main.cpp
+SRC_FILES = Account.cpp \
+			tests.cpp
 
 OBJ_FILES = $(SRC_FILES:%.cpp=%.o)
 
-NAME = phonebook
+NAME = ex02
 
 all: $(NAME)
 

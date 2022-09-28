@@ -103,44 +103,15 @@ int main() {
 
 			phonebook.search();
 
-			std::string	index_str;
-			std::cout << "Choose an index: ";
-			getline(std::cin, index_str);
-
-			// Check that index only consists of digits
-			bool	is_only_digits = true;
-			for (unsigned i = 0; i < index_str.size(); i++) {
-				if (std::isdigit(index_str[i]) == 0)
-					is_only_digits = false;
-			}
-
-			if (is_only_digits == false) {
-				std::cout << "The index has to consist of digits only!" << std::endl;
-				continue;
-			}
-
-			// Check that the index_str is not empty
-			if (index_str.empty()) {
-				std::cout << "The index is empty." << std::endl;
-				continue;
-			}
-
-			int	index_int;
-			index_int = std::atoi(index_str.c_str());
-
-			// Check whether the index exists
-			if (index_int < 0 || index_int >= (int)phonebook.idx_pointer) {
-				std::cout << "The index does not exist in the phonebook! Try another one." << std::endl;
-			} else {
-				phonebook.contacts[index_int]->print_contact();
-			}
-
 		} else if (input == "EXIT") {
 			break;
+		} else if (std::cin.eof()) {
+			return 0;
 		}
 		else {
 			std::cout << "Did not understand your command. Try ADD, SEARCH or EXIT." << std::endl;
 		}
+
 	}
     return 0;
 }
