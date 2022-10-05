@@ -3,6 +3,7 @@
 #include "Contact.hpp"
 
 Contact::Contact( void ) {
+	std::cout << "Contact constructor" << std::endl;
 }
 
 Contact::~Contact( void ) {
