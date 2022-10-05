@@ -72,3 +72,35 @@ std::ostream& operator<<( std::ostream& os, const Fixed& fixed ) {
 	os << fixed.toFloat();
 	return os;
 }
+
+// Overload comparison operators
+bool	Fixed::operator<(const Fixed& rhs) const {
+	return this->getRawBits() < rhs.getRawBits();
+}
+
+bool	Fixed::operator>(const Fixed& rhs) const {
+	return rhs < *this;
+}
+
+bool	Fixed::operator<=(const Fixed& rhs) const {
+	return !(*this > rhs);
+}
+
+bool	Fixed::operator>=(const Fixed& rhs) const {
+	return !(*this < rhs);
+}
+
+bool	Fixed::operator==(const Fixed& rhs) const {
+	return this->getRawBits() == rhs.getRawBits();
+}
+
+bool	Fixed::operator!=(const Fixed& rhs) const {
+	return !(*this == rhs);
+}
+
+// OVerload arithmetic operators
+
+Fixed	Fixed::operator*(const Fixed& rhs) const {
+	Fixed a = this->toFloat() * rhs.toFloat();
+	return a;
+}

@@ -1,10 +1,10 @@
-CC = clang++
-# CFLAGS = -Wall -Wextra -Werror -Wpedantic -std=c++98
-CFLAGS =  -std=c++98
-
+CC = c++
+CFLAGS = -Wall -Wextra -Werror -Wpedantic -std=c++98
 
 SRC_FILES = main.cpp \
 			Fixed.cpp
+
+HEADER_FILES = Fixed.hpp
 
 OBJ_FILES = $(SRC_FILES:%.cpp=%.o)
 
@@ -18,7 +18,7 @@ run: all
 $(NAME): $(OBJ_FILES)
 	$(CC) $(CFLAGS) $^ -o $@
 
-%.o: %.cpp
+%.o: %.cpp $(HEADER_FILES)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

@@ -22,6 +22,18 @@ class Fixed {
 		Fixed& operator=( const Fixed& fixed ) ;	// Copy assignment operator
 		~Fixed( void );								// destructor
 
+		// Overload comparison operators
+		bool	operator<( const Fixed& rhs) const;
+		bool	operator>( const Fixed& rhs) const;
+		bool	operator<=(const Fixed& rhs) const;
+		bool	operator>=(const Fixed& rhs) const;
+		bool	operator==(const Fixed& rhs) const;
+		bool	operator!=(const Fixed& rhs) const;
+
+		// OVerload arithmetic operators
+		Fixed	operator*(const Fixed& rhs) const;
+
+
 		int		getRawBits( void ) const;
 		void	setRawBits( int const raw );
 

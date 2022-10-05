@@ -5,8 +5,8 @@ class Fixed {
 
 	private:
 
-		int			fixed_point_value;
-		static int	fractional_bits;
+		int			_fixed_point_value;
+		static int	_fractional_bits;
 
 	public:
 
