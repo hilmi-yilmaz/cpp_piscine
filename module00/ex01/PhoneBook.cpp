@@ -27,19 +27,12 @@ void	PhoneBook::add(std::string first_name,
 						std::string darkest_secret
 						) {
 
-	// // Check for empty inputs
-	// if (this->_is_wrong_contact(contact))
-	// {
-	// 	std::cout << "One or more input fields are incorrect. Contact is not saved in the phonebook." << std::endl;
-	// 	return;
-	// }
-
 	// Add new contact
-	this->_contacts[this->_oldest].first_name = first_name;
-	this->_contacts[this->_oldest].last_name = last_name;
-	this->_contacts[this->_oldest].nick_name = nick_name;
-	this->_contacts[this->_oldest].phone_number = phone_number;
-	this->_contacts[this->_oldest].darkest_secret = darkest_secret;
+	this->_contacts[this->_oldest].set_first_name(first_name);
+	this->_contacts[this->_oldest].set_last_name(last_name);
+	this->_contacts[this->_oldest].set_nick_name(nick_name);
+	this->_contacts[this->_oldest].set_phone_number(phone_number);
+	this->_contacts[this->_oldest].set_darkest_secret(darkest_secret);
 
 	this->_oldest++;
 	if (this->_oldest == 8)
@@ -47,30 +40,10 @@ void	PhoneBook::add(std::string first_name,
 
 	if (this->_total_contacts != 8)
 		this->_total_contacts++;
-
-	// // Check if the phonebook is full: if so, oldest person gets replaced by new contact
-	// if (this->_total_contacts == 8) {
-
-
-
-	// 	// Set the _oldest index pointer to oldest contact
-	// 	if (this->_oldest == 7) {
-	// 		this->_oldest = 0;
-	// 	} else {
-	// 		this->_oldest += 1;
-	// 	}
-	// }
-	// else {
-	// 	this->_contacts[this->_idx_pointer] = &contact;
-	// 	this->_idx_pointer += 1;
-	// 	this->_total_contacts += 1;
-	// }
 	std::cout << "Contact added to phonebook!" << std::endl;
 }
 
 void	PhoneBook::search(void) {
-
-	std::ios_base&	align = std::right;
 
 	std::cout << std::setw(10) << std::right << "index" << "|";
 	std::cout << std::setw(10) << std::right << "first name" << "|";
@@ -79,11 +52,11 @@ void	PhoneBook::search(void) {
 
 	for (size_t i = 0; i < this->_total_contacts; i++) {
 		std::cout << std::setw(10) << std::right << i << "|";
-		this->_max_print(this->_contacts[i].first_name);
+		this->_max_print(this->_contacts[i].get_first_name());
 		std::cout << "|";
-		this->_max_print(this->_contacts[i].last_name);
+		this->_max_print(this->_contacts[i].get_last_name());
 		std::cout << "|";
-		this->_max_print(this->_contacts[i].nick_name);
+		this->_max_print(this->_contacts[i].get_nick_name());
 		std::cout << std::endl;
 	}
 
@@ -92,10 +65,26 @@ void	PhoneBook::search(void) {
 	getline(std::cin, index_str);
 
 	this->_print_contact(index_str);
-
 }
 
-void	PhoneBook::_max_print(std::string string, std::ios_base& align) {
+std::string	PhoneBook::ask_user_info( std::string prompt ) {
+
+	std::string	info;
+
+	while (true) {
+
+		std::cout << prompt << ": ";
+		std::getline(std::cin, info);
+		if (!_is_empty_string(info)) {
+			break ;
+		} else {
+			std::cout << "Cannot continue with empty input. Try again." << std::endl;
+		}
+	}
+	return info;
+}
+
+void	PhoneBook::_max_print(std::string string) {
 
 	char	buffer[11];
 
@@ -104,31 +93,10 @@ void	PhoneBook::_max_print(std::string string, std::ios_base& align) {
 
 		string.copy(buffer, 9, 0);
 		buffer[9] = '.';
-		std::cout << std::setw(10) << buffer;			
+		std::cout << std::setw(10) << buffer;
+		return;		
 	}
-	else {
-		std::cout << std::setw(10) << align << string;
-	}
-}
-
-bool	is_empty_input(std::string string) {
-
-	for (std::string::size_type i = 0; i < string.size(); i++) {
-		if (isspace(string[i]) == false)
-			return (false);
-	}
-	return (true);
-}
-
-bool	PhoneBook::_is_wrong_contact(Contact& contact) {
-
-	if (is_empty_input(contact.first_name) ||
-		is_empty_input(contact.last_name) ||
-		is_empty_input(contact.nick_name) ||
-		is_empty_input(contact.phone_number) ||
-		is_empty_input(contact.darkest_secret))
-		return (true);
-	return (false);
+	std::cout << std::setw(10) << std::right << string;
 }
 
 void	PhoneBook::_print_contact(std::string index_str) {
@@ -155,8 +123,14 @@ void	PhoneBook::_print_contact(std::string index_str) {
 
 	// Check whether the index exists
 	if (index_int < 0 || (this->_total_contacts != 8 && index_int >= (int)this->_oldest)) {
-		std::cout << "The index does not exist in the phonebook! Try another one." << std::endl;
+		std::cout << "The index does not exist in the phonebook!" << std::endl;
 	} else {
 		this->_contacts[index_int].print_contact();
 	}
+}
+
+bool	PhoneBook::_is_empty_string( std::string str ) {
+	if (str.find_first_not_of(" \t") != std::string::npos && !str.empty())
+		return false;
+	return true;
 }
