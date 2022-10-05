@@ -77,6 +77,9 @@ std::string	PhoneBook::ask_user_info( std::string prompt ) {
 		std::getline(std::cin, info);
 		if (!_is_empty_string(info)) {
 			break ;
+		} else if (std::cin.eof()) {
+			std::cout << std::endl;
+			std::exit(0);
 		} else {
 			std::cout << "Cannot continue with empty input. Try again." << std::endl;
 		}
@@ -122,7 +125,7 @@ void	PhoneBook::_print_contact(std::string index_str) {
 	index_int = std::atoi(index_str.c_str());
 
 	// Check whether the index exists
-	if (index_int < 0 || (this->_total_contacts != 8 && index_int >= (int)this->_oldest)) {
+	if (index_int < 0 || index_int >= static_cast<int>(this->_total_contacts)) {
 		std::cout << "The index does not exist in the phonebook!" << std::endl;
 	} else {
 		this->_contacts[index_int].print_contact();

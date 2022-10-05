@@ -7,6 +7,16 @@ int main() {
 
     PhoneBook   phonebook;
 
+	phonebook.add("1", "1", "1", "1", "1");
+	phonebook.add("1", "1", "1", "1", "1");
+	phonebook.add("1", "1", "1", "1", "1");
+	phonebook.add("1", "1", "1", "1", "1");
+	phonebook.add("1", "1", "1", "1", "1");
+	phonebook.add("1", "1", "1", "1", "1");
+	phonebook.add("1", "1", "1", "1", "1");
+	phonebook.add("8", "8", "8", "8", "8");
+
+
 	while (true) {
 		std::cout << "Enter ADD, SEARCH or EXIT\n";
 
@@ -34,7 +44,7 @@ int main() {
 		} else if (input == "EXIT") {
 			break;
 		} else if (std::cin.eof()) {
-			return 0;
+			std::exit(0);
 		}
 		else {
 			std::cout << "Did not understand your command. Try ADD, SEARCH or EXIT." << std::endl;
