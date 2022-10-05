@@ -1,10 +1,14 @@
-CC = clang++
+CC = c++
 CFLAGS = -Wall -Wextra -Werror -Wpedantic -std=c++98
 
 SRC_FILES = main.cpp \
 			Weapon.cpp \
 			HumanA.cpp \
 			HumanB.cpp
+
+HEADER_FILES = 	Weapon.hpp \
+				HumanA.hpp \
+				HumanB.hpp
 
 OBJ_FILES = $(SRC_FILES:%.cpp=%.o)
 
@@ -18,7 +22,7 @@ run: all
 $(NAME): $(OBJ_FILES)
 	$(CC) $(CFLAGS) $^ -o $@
 
-%.o: %.cpp
+%.o: %.cpp $(HEADER_FILES)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

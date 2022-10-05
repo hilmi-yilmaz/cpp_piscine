@@ -2,9 +2,6 @@
 
 int	main(void) {
 
-	Zombie no_name;
-	no_name.announce();
-
 	Zombie zombie("Foo");
 	zombie.announce();
 
