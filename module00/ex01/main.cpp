@@ -7,16 +7,6 @@ int main() {
 
     PhoneBook   phonebook;
 
-	phonebook.add("1", "1", "1", "1", "1");
-	phonebook.add("1", "1", "1", "1", "1");
-	phonebook.add("1", "1", "1", "1", "1");
-	phonebook.add("1", "1", "1", "1", "1");
-	phonebook.add("1", "1", "1", "1", "1");
-	phonebook.add("1", "1", "1", "1", "1");
-	phonebook.add("1", "1", "1", "1", "1");
-	phonebook.add("8", "8", "8", "8", "8");
-
-
 	while (true) {
 		std::cout << "Enter ADD, SEARCH or EXIT\n";
 
