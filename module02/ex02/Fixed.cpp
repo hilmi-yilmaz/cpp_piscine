@@ -98,9 +98,80 @@ bool	Fixed::operator!=(const Fixed& rhs) const {
 	return !(*this == rhs);
 }
 
-// OVerload arithmetic operators
+// Overload arithmetic operators
+Fixed	Fixed::operator-(const Fixed& rhs) const {
+
+	Fixed	fixed = this->toFloat() - rhs.toFloat();
+	return fixed;
+}
+
+Fixed	Fixed::operator+(const Fixed& rhs) const {
+	Fixed fixed = this->toFloat() + rhs.toFloat();
+	return fixed;
+}
 
 Fixed	Fixed::operator*(const Fixed& rhs) const {
-	Fixed a = this->toFloat() * rhs.toFloat();
-	return a;
+	Fixed fixed = this->toFloat() * rhs.toFloat();
+	return fixed;
+}
+
+Fixed	Fixed::operator/(const Fixed& rhs) const {
+	Fixed fixed = this->toFloat() / rhs.toFloat();
+	return fixed;
+}
+
+// Overload increment/decrement operators
+
+// Post-increment
+Fixed	Fixed::operator++(int) {
+
+	Fixed	copy (*this);
+
+	this->setRawBits(this->getRawBits() + 1);
+	return copy;
+}
+
+// Post-decrement
+Fixed	Fixed::operator--(int) {
+	Fixed	copy (*this);
+
+	this->setRawBits(this->getRawBits() - 1);
+	return copy;
+}
+
+// Pre-increment
+Fixed&	Fixed::operator++() {
+	this->setRawBits(this->getRawBits() + 1);
+	return *this;
+}
+
+// Pre-decrement
+Fixed&	Fixed::operator--() {
+	this->setRawBits(this->getRawBits() - 1);
+	return *this;
+}
+
+// Min and Max
+Fixed&	Fixed::min(Fixed& a, Fixed& b) {
+	if (a < b)
+		return a;
+	return b;
+}
+
+const Fixed&	Fixed::min(const Fixed& a, const Fixed& b) {
+	if (a < b)
+		return a;
+	return b;
+}
+
+Fixed&	Fixed::max(Fixed& a, Fixed& b) {
+	if (a > b)
+		return a;
+	return b;
+}
+
+const Fixed&	Fixed::max(const Fixed& a, const Fixed& b) {
+	if (a > b)
+		return a;
+	return b;
 }

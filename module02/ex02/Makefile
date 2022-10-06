@@ -7,10 +7,9 @@ SRC_FILES = main.cpp \
 
 HEADER_FILES = Fixed.hpp
 
-
 OBJ_FILES = $(SRC_FILES:%.cpp=%.o)
 
-NAME = ex00
+NAME = ex02
 
 all: $(NAME)
 

@@ -30,8 +30,24 @@ class Fixed {
 		bool	operator==(const Fixed& rhs) const;
 		bool	operator!=(const Fixed& rhs) const;
 
-		// OVerload arithmetic operators
+		// Overload arithmetic operators
+		Fixed	operator-(const Fixed& rhs) const;
+		Fixed	operator+(const Fixed& rhs) const;
 		Fixed	operator*(const Fixed& rhs) const;
+		Fixed	operator/(const Fixed& rhs) const;
+
+		// Overload increment/decrement operators
+		Fixed	operator++( int );	// post-increment
+		Fixed	operator--( int );	// post-decrement
+		Fixed&	operator++();		// pre-increment
+		Fixed&	operator--();		// pre-decrement
+
+		// Min and Max
+		static Fixed&		min(Fixed& a, Fixed& b);
+		static const Fixed&	min(const Fixed& a, const Fixed& b);
+		static Fixed&		max(Fixed& a, Fixed& b);
+		static const Fixed&	max(const Fixed& a, const Fixed& b);
+
 
 
 		int		getRawBits( void ) const;
