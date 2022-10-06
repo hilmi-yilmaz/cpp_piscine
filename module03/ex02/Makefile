@@ -3,14 +3,16 @@ CFLAGS = -Wall -Wextra -Werror -Wpedantic -std=c++98
 
 SRC_FILES = main.cpp \
 			ClapTrap.cpp \
-			ScavTrap.cpp
+			ScavTrap.cpp \
+			FragTrap.cpp
 
 HEADER_FILES = 	ClapTrap.hpp \
-				ScavTrap.hpp
+				ScavTrap.hpp \
+				FragTrap.hpp
 
 OBJ_FILES = $(SRC_FILES:%.cpp=%.o)
 
-NAME = ex01
+NAME = ex02
 
 all: $(NAME)
 
