@@ -21,6 +21,7 @@ int main(void) {
 	delete j;
 	delete i;
 
+	// Wrong 
 	std::cout << std::endl;
 	const WrongAnimal*	wrong_meta = new WrongAnimal();
 	const WrongAnimal*	wrong_i = new WrongCat();
@@ -43,7 +44,11 @@ int main(void) {
 	delete cat;
 	delete dog;
 
-	// Wrong 
+	// std::cout << "\nTesting operator= overload" << std::endl;
+	// Dog		n;
+	// Animal 	k = n;
+	// std::cout << n.getType() << std::endl;
+	// std::cout << k.getType() << std::endl;
 
 	return 0;
 }

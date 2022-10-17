@@ -3,15 +3,15 @@
 
 // Constructors and Destructors
 WrongAnimal::WrongAnimal(): _type("") {
-	std::cout << "WrongAnimal constructor called." << std::endl;
+	std::cout << "WrongAnimal constructor called" << std::endl;
 }
 
 WrongAnimal::WrongAnimal(std::string type): _type(type) {
-	std::cout << "WrongAnimal constructor called." << std::endl;
+	std::cout << "WrongAnimal constructor called" << std::endl;
 }
 
 WrongAnimal::~WrongAnimal() {
-	std::cout << "WrongAnimal destructor called." << std::endl;
+	std::cout << "WrongAnimal destructor called" << std::endl;
 }
 
 std::string WrongAnimal::getType(void) const {
