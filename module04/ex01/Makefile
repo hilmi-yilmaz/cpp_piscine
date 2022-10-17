@@ -5,11 +5,15 @@ SRC_FILES = main.cpp \
 			Animal.cpp \
 			Dog.cpp \
 			Cat.cpp \
+			WrongAnimal.cpp \
+			WrongCat.cpp \
 			Brain.cpp
 
 HEADER_FILES = 	Animal.hpp \
 				Dog.hpp \
 				Cat.hpp \
+				WrongAnimal.hpp \
+				WrongCat.hpp \
 				Brain.hpp
 
 OBJ_FILES = $(SRC_FILES:%.cpp=%.o)
