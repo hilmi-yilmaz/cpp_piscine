@@ -19,12 +19,11 @@ Animal::~Animal() {
 	std::cout << "Animal destructor called" << std::endl;
 }
 
-
 // Copy assignment operator overload
 Animal&	Animal::operator=(const Animal& other) {
 	std::cout << "Animal Copy Assignment constructor called" << std::endl;
 	if (this != &other) {
-		this->_type = other._type;
+		this->_type = other.getType();
 	}
 	return *this;
 }

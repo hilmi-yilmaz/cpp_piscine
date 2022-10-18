@@ -19,6 +19,9 @@ class Cat: public Animal {
 		// Getters
 		Brain	*get_brain() const;
 
+		// Copy Assignment operator overload
+		Cat&	operator=(const Cat& other);
+
 		// Custom member functions
 		void	makeSound(void) const;
 };

@@ -17,7 +17,7 @@ class Dog: public Animal {
 		~Dog();
 
 		// Copy assignment operator overload
-		// const Dog& operator=(const Dog& other);
+		Dog& operator=(const Dog& other);
 
 		// Getters
 		Brain	*get_brain() const;

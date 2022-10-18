@@ -11,7 +11,7 @@ Dog::Dog(): Animal("Dog") {
 Dog::Dog(const Dog& other) {
 	std::cout << "Dog Copy constructor called" << std::endl;
 	this->_type = other.getType();
-	this->_brain = new Brain;
+	this->_brain = new Brain();
 	*(this->_brain) = *(other._brain);
 }
 
@@ -21,12 +21,15 @@ Dog::~Dog() {
 }
 
 // Copy assignment operator overload
-// const Dog&	Dog::operator=(const Dog& other) {
-// 	if (this != &other) {
-// 		this->_type = other.getType();
-// 	}
-// 	return *this;
-// }
+Dog&	Dog::operator=(const Dog& other) {
+	std::cout << "Dog Copy Assignment called" << std::endl;
+	if (this != &other) {
+		this->_type = other.getType();
+		this->_brain = new Brain();
+		*(this->_brain) = *(other.get_brain());
+	}
+	return *this;
+}
 
 // Getters
 Brain	*Dog::get_brain() const {

@@ -12,7 +12,7 @@ int main(void) {
 		const Animal* j = new Dog();
 		const Animal* i = new Cat();
 
-		delete j;//should not create a leak
+		delete j;	//should not create a leak
 		delete i;
 	}
 
@@ -47,12 +47,39 @@ int main(void) {
 	}
 
 	{
-		std::cout << "\nTEST 4: Operator overload inheritance" << std::endl;
+		std::cout << "\nTEST 4: Copy constructor" << std::endl;
 		Dog dog1;
-		Dog	dog2 = dog1;
+		Dog	dog2 = dog1; // same as Dog dog2(dog1);
 
 		std::cout << "dog1: " << dog1.getType() << std::endl;
 		std::cout << "dog2: " << dog2.getType() << std::endl;
+	}
+
+	{
+		std::cout << "\nTEST 5: Operator overload inheritance" << std::endl;
+		Cat cat1;
+		Cat	cat2;
+
+		cat2 = cat1;
+
+		std::cout << "cat1: " << cat1.getType() << std::endl;
+		std::cout << "cat2: " << cat2.getType() << std::endl;
+	}
+
+	{
+		std::cout << "\nTEST 6: Test copy constructor" << std::endl;
+		Cat cat1;
+		Cat	cat2(cat1);
+
+		std::cout << "cat1: " << cat1.getType() << std::endl;
+		std::cout << "cat2: " << cat2.getType() << std::endl;
+	}
+
+	{
+		std::cout << "\nTEST 7: Delete dog instances with pointer to dog (not animal)" << std::endl;
+		Dog	*dog1 = new Dog;
+
+		delete dog1;
 
 	}
 

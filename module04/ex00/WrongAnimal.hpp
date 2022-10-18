@@ -13,7 +13,7 @@ class WrongAnimal {
 		// Constructors and destructors
 		WrongAnimal();
 		WrongAnimal(std::string type);
-		~WrongAnimal();
+		virtual ~WrongAnimal();
 
 		// Copy assignment operator overload
 		WrongAnimal& operator=(const WrongAnimal& other);
