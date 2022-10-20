@@ -61,6 +61,14 @@ void	Form::beSigned(const Bureaucrat& bureaucrat) {
 	this->_is_signed = true;
 }
 
+bool	Form::gradeIsLow(Bureaucrat const& executor) const {
+	if (this->getGradeToExecute() < executor.getGrade()) {
+		return true;
+	}
+	return false;
+}
+
+
 // Insertion operator overload
 std::ostream&	operator<<(std::ostream& os, const Form& form) {
 	os << form.getName() << ", form is signed: " << form.getIsSigned() << ", form grade to sign: " << form.getGradeToSign() << ", form grade to execute: " << form.getGradeToExecute() << std::endl;

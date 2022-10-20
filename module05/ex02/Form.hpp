@@ -3,6 +3,7 @@
 
 # include <string>
 # include <iostream>
+# include <exception>
 
 class Bureaucrat;
 
@@ -14,7 +15,7 @@ class Form {
 		Form();
 		Form(std::string name, unsigned int grade_to_sign, unsigned int grade_to_execute);
 		Form(const Form& other);
-		~Form();
+		virtual ~Form();
 
 		// Getters
 		std::string		getName() const;
@@ -23,10 +24,12 @@ class Form {
 		unsigned int	getGradeToExecute() const;
 		
 		// Custom member functions
-		void			beSigned(const Bureaucrat& bureaucrat);
+		virtual void	beSigned(const Bureaucrat& bureaucrat);
+		virtual void	execute(Bureaucrat const& executor) const = 0;	// Pure virtual function
+		bool			gradeIsLow(Bureaucrat const& executor) const;
 
 		// Exceptions
-		class GradeTooHighException : public std::exception  {
+		class GradeTooHighException : public std::exception {
 			public:
 				virtual const char* what() const throw() {
 					return ("Grade too high, should be between 1 and 150 (both inclusive).");
@@ -40,6 +43,13 @@ class Form {
 				}
 		};
 
+		class FormNotsignedException : public std::exception  {
+			public:
+				virtual const char* what() const throw() {
+					return ("Form is not signed!");
+				}
+		};
+
 	private:
 		const std::string	_name;
 		bool				_is_signed;
@@ -48,7 +58,7 @@ class Form {
 
 		// Copy assignment operator overload
 		Form&	operator=(const Form& other);
-	
+
 };
 
 // Insertion operator overload

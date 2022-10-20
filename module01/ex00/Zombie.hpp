@@ -7,16 +7,16 @@ class Zombie {
 
 	public:
 
-		void	announce( void );
-
+		// Constructors and destructors
 		Zombie( void );
 		Zombie( std::string name );
 		~Zombie( void );
 
+		// Custom member functions 
+		void	announce( void );
+
 	private:
-
-		std::string name;
-
+		std::string _name;
 };
 
 

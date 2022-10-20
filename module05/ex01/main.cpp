@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 int	main(void) {
 
@@ -63,16 +64,19 @@ int	main(void) {
 		std::cout << e.what() << std::endl;
 	}
 
-	std::cout << "\nTest6: Bureaucrat signs a form" << std::endl;
-	try {
-		Bureaucrat bureaucrat("bureaucrat", 5);
-		Form form("form", 10, 10);
-		bureaucrat.signForm(form);
-		std::cout << form;
-	}
-	catch (const Form::GradeTooLowException& e) {
-		std::cout << e.what() << std::endl;
-	}
+	std::cout << "\nTest6: Bureaucrat signs a form (grade enough)" << std::endl;
+	Bureaucrat bureaucrat("bureaucrat", 10);
+	Form form("form", 10, 10);
+	bureaucrat.signForm(form);
+	std::cout << form;
+
+	std::cout << "\nTest7: Bureaucrat signs a form (grade not enough)" << std::endl;
+	Bureaucrat bureaucrat1("bureaucrat1", 15);
+	Form form1("form1", 10, 10);
+	bureaucrat1.signForm(form1);
+	std::cout << form1;
+
+	std::cout << "\n";
 
 	return 0;
 }
