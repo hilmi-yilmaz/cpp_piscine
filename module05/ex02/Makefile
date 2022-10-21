@@ -4,11 +4,15 @@ CFLAGS = -Wall -Wextra -Werror -Wpedantic -std=c++98
 SRC_FILES = main.cpp \
 			Bureaucrat.cpp \
 			Form.cpp \
-			ShrubberyCreationForm.cpp
+			ShrubberyCreationForm.cpp \
+			RobotomyRequestForm.cpp \
+			PresidentialPardonForm.cpp
 
 HEADER_FILES = 	Bureaucrat.hpp \
 				Form.hpp \
-				ShrubberyCreationForm.hpp
+				ShrubberyCreationForm.hpp \
+				RobotomyRequestForm.hpp \
+				PresidentialPardonForm.hpp
 
 OBJ_FILES = $(SRC_FILES:%.cpp=%.o)
 

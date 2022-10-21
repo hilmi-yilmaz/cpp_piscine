@@ -1,18 +1,19 @@
+#include <fstream>
+#include <exception>
 #include "ShrubberyCreationForm.hpp"
 #include "Bureaucrat.hpp"
 
 // Constructors and destructors
-ShrubberyCreationForm::ShrubberyCreationForm() : Form("ShrubberyCreationForm", 145, 137),  _target("") {
+ShrubberyCreationForm::ShrubberyCreationForm() : Form("ShrubberyCreationForm", 145, 137, "") {
 	std::cout << "ShrubberyCreationForm Default constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form("ShrubberyCreationForm", 145, 137), _target(target) {
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form("ShrubberyCreationForm", 145, 137, target) {
 	std::cout << "ShrubberyCreationForm Parametrized constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : Form("ShrubberyCreationForm", other.getGradeToSign(), other.getGradeToExecute()) {
-	// this->_is_signed = other.getIsSigned();
-	this->_target = other.getTarget();
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : Form("ShrubberyCreationForm", other.getGradeToSign(), other.getGradeToExecute(), other.getTarget()) {
+	std::cout << "ShrubberyCreationForm Copy constructor called" << std::endl;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {
@@ -25,23 +26,31 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return *this;
 }
 
-// Getters
-std::string	ShrubberyCreationForm::getTarget() const {
-	return this->_target;
-}
-
 // Custom member functions
 void	ShrubberyCreationForm::execute(Bureaucrat const& executor) const {
+	
+	// Will throw an exception if the executor cannot execute the form.
+	this->canExecute(executor);
 
-	if (!this->getIsSigned()) {
-		throw FormNotsignedException();
-	}
-	if (this->getGradeToExecute() < executor.getGrade()) {
-		throw GradeTooLowException();
+	// Open file
+	std::ofstream	target_file (this->getTarget() + "_shrubbery");
+	if (!target_file.is_open()) {
+		std::cout << "Error opening file: " << this->getTarget() + "_shrubbery" << std::endl;
+		return;
 	}
 
 	// Execute the action (create an ascii tree)
-	std::cout << _target << " executes stuff" << std::endl;
+	target_file << "\
+        ###\n\
+       #o###\n\
+     #####o###\n\
+    #o#\\#|#/###\n\
+     ###\\|/#o#\n\
+      # }|{  #\n\
+ ejm97  }|{" << std::endl;
+
+	target_file.close();
+	std::cout << this->getTarget() + "_shrubbery" << " file created with an ascii tree in it!" << std::endl;
 }
 
 // Insertion operator overload

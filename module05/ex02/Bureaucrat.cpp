@@ -64,8 +64,21 @@ void	Bureaucrat::signForm(Form& form) {
 		std::cout << this->_name << " signed " << form.getName() << std::endl;
 	}
 	catch(Form::GradeTooLowException& e) {
-		std::cout << this->_name << " couldn’t sign " << form.getName() << " because grade to low." << std::endl;
+		std::cout << this->_name << " couldn’t sign " << form.getName() << " because grade too low." << std::endl;
 	}
+}
+
+void	Bureaucrat::executeForm(Form const& form) {
+	try {
+		form.execute(*this);
+	} catch (Form::GradeTooLowException& e) {
+		std::cout << "Grade too low to execute the form!" << std::endl;
+		return;
+	} catch (Form::FormNotsignedException& e) {
+		std::cout << "The form is not signed yet, so cannot execute it!" << std::endl;
+		return;
+	}
+	std::cout << this->_name << " executed " << form.getName() << std::endl;
 }
 
 // Insertion operator overload

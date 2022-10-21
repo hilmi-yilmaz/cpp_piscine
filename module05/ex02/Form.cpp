@@ -7,7 +7,7 @@ Form::Form() : _name("NoName"), _is_signed(false), _grade_to_sign(150), _grade_t
 	std::cout << "Form Default constructor called" << std::endl;
 }
 
-Form::Form(std::string name, unsigned int grade_to_sign, unsigned int grade_to_execute): _name(name), _is_signed(false), _grade_to_sign(grade_to_sign), _grade_to_execute(grade_to_execute) {
+Form::Form(std::string name, unsigned int grade_to_sign, unsigned int grade_to_execute, std::string target): _name(name), _is_signed(false), _grade_to_sign(grade_to_sign), _grade_to_execute(grade_to_execute), _target(target) {
 	std::cout << "Form Parametrized constructor called" << std::endl;
 	if (grade_to_sign < 1) {
 		throw GradeTooHighException();
@@ -53,6 +53,10 @@ unsigned int	Form::getGradeToExecute() const {
 	return _grade_to_execute;
 }
 
+std::string	Form::getTarget() const {
+	return this->_target;
+}
+
 // Custom member functions
 void	Form::beSigned(const Bureaucrat& bureaucrat) {
 	if (bureaucrat.getGrade() > this->_grade_to_sign) {
@@ -66,6 +70,15 @@ bool	Form::gradeIsLow(Bureaucrat const& executor) const {
 		return true;
 	}
 	return false;
+}
+
+void	Form::canExecute(Bureaucrat const& executor) const {
+	if (!this->getIsSigned()) {
+		throw FormNotsignedException();
+	}
+	if (this->gradeIsLow(executor)) {
+		throw GradeTooLowException();
+	}
 }
 
 

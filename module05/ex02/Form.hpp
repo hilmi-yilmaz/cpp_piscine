@@ -13,7 +13,7 @@ class Form {
 
 		// Constructors and destructors
 		Form();
-		Form(std::string name, unsigned int grade_to_sign, unsigned int grade_to_execute);
+		Form(std::string name, unsigned int grade_to_sign, unsigned int grade_to_execute, std::string target);
 		Form(const Form& other);
 		virtual ~Form();
 
@@ -22,11 +22,13 @@ class Form {
 		bool			getIsSigned() const;
 		unsigned int	getGradeToSign() const;
 		unsigned int	getGradeToExecute() const;
-		
+		std::string		getTarget() const;
+
 		// Custom member functions
 		virtual void	beSigned(const Bureaucrat& bureaucrat);
 		virtual void	execute(Bureaucrat const& executor) const = 0;	// Pure virtual function
 		bool			gradeIsLow(Bureaucrat const& executor) const;
+		void			canExecute(Bureaucrat const& executor) const;
 
 		// Exceptions
 		class GradeTooHighException : public std::exception {
@@ -55,6 +57,7 @@ class Form {
 		bool				_is_signed;
 		const unsigned int	_grade_to_sign;
 		const unsigned int	_grade_to_execute;
+		const std::string	_target;
 
 		// Copy assignment operator overload
 		Form&	operator=(const Form& other);
