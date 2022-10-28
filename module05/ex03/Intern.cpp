@@ -1,4 +1,8 @@
 #include "Intern.hpp"
+#include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 // Constructors and destructors
 Intern::Intern() {
@@ -6,5 +10,34 @@ Intern::Intern() {
 }
 
 Intern::Intern(const Intern& other) {
-	std::cout << "Intern Parametrized constructor called" << std::endl;
+	std::cout << "Intern Copy constructor called" << std::endl;
+	(void)other;
+}
+
+Intern::~Intern() {
+	std::cout << "Intern Destructor called" << std::endl;
+}
+
+// Copy assignment operator overload
+Intern&	Intern::operator=(const Intern& other) {
+	(void)other;
+	return *this;
+}
+
+// Custom member function
+Form*	Intern::makeForm(std::string form_name, std::string form_target) {
+
+	std::string	available_names[] = {"robotomy request", "presidential pardon", "shrubbery creation"};
+	// Form**		available_forms[] = {RobotomyRequestForm, PresidentialPardonForm, ShrubberyCreationForm};
+
+	for (unsigned int i = 0; i < 4; i++) {
+		if (form_name == available_names[i]) {
+			Form* form = new ShrubberyCreationForm(form_target, form_name);
+			std::cout << "Intern creates " << form_name << std::endl;
+			return form;
+		}
+	
+	}
+	std::cout << "Form with name " << form_name << " does not exist" << std::endl;
+	return NULL;
 }

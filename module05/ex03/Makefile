@@ -6,13 +6,15 @@ SRC_FILES = main.cpp \
 			Form.cpp \
 			ShrubberyCreationForm.cpp \
 			RobotomyRequestForm.cpp \
-			PresidentialPardonForm.cpp
+			PresidentialPardonForm.cpp \
+			Intern.cpp
 
 HEADER_FILES = 	Bureaucrat.hpp \
 				Form.hpp \
 				ShrubberyCreationForm.hpp \
 				RobotomyRequestForm.hpp \
-				PresidentialPardonForm.hpp
+				PresidentialPardonForm.hpp \
+				Intern.hpp
 
 OBJ_FILES = $(SRC_FILES:%.cpp=%.o)
 

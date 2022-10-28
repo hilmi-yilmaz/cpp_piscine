@@ -8,7 +8,7 @@ ShrubberyCreationForm::ShrubberyCreationForm() : Form("ShrubberyCreationForm", 1
 	std::cout << "ShrubberyCreationForm Default constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form("ShrubberyCreationForm", 145, 137, target) {
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target, std::string form_name) : Form(form_name, 145, 137, target) {
 	std::cout << "ShrubberyCreationForm Parametrized constructor called" << std::endl;
 }
 
