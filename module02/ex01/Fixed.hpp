@@ -15,21 +15,21 @@ class Fixed {
 
 	public:
 
-		Fixed( void );								// default constructor
-		Fixed( const Fixed& fixed);					// copy constructor
-		Fixed( const int number );					// integer constructor
-		Fixed( const float number );				// float constructor
-		Fixed& operator=( const Fixed& fixed ) ;	// Copy assignment operator
-		~Fixed( void );								// destructor
+		Fixed(void);								// default constructor
+		Fixed(const Fixed& fixed);					// copy constructor
+		Fixed(const int number);					// integer constructor
+		Fixed(const float number);					// float constructor
+		Fixed& operator=(const Fixed& fixed);		// Copy assignment operator
+		~Fixed(void);								// destructor
 
-		int		getRawBits( void ) const;
-		void	setRawBits( int const raw );
+		int		getRawBits(void) const;
+		void	setRawBits(int const raw);
 
-		int		toInt( void ) const;
-		float	toFloat( void ) const;
+		int		toInt(void) const;
+		float	toFloat(void) const;
 
 };
 
-std::ostream& operator<<( std::ostream& os, const Fixed& fixed );
+std::ostream& operator<<(std::ostream& os, const Fixed& fixed);
 
 #endif

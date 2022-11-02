@@ -100,7 +100,6 @@ bool	Fixed::operator!=(const Fixed& rhs) const {
 
 // Overload arithmetic operators
 Fixed	Fixed::operator-(const Fixed& rhs) const {
-
 	Fixed	fixed = this->toFloat() - rhs.toFloat();
 	return fixed;
 }

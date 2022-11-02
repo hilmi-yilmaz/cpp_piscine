@@ -11,7 +11,7 @@ class Fixed {
 	public:
 
 		Fixed( void );
-		Fixed( const Fixed& fixed);			// copy constructor
+		Fixed( const Fixed& fixed );			// copy constructor
 		~Fixed( void );
 		Fixed& operator=( const Fixed& fixed ) ;	// Copy assignment operator
 
