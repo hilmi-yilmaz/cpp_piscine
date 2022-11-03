@@ -2,8 +2,7 @@
 #include "Bureaucrat.hpp"
 
 // Constructors and destructors
-Bureaucrat::Bureaucrat() : _name("NoName"), _grade(150) {
-	std::cout << "Bureaucrat Constructor called" << std::endl;
+Bureaucrat::Bureaucrat() {
 }
 
 Bureaucrat::Bureaucrat(std::string name, unsigned int grade) : _name(name) {

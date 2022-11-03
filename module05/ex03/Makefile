@@ -1,5 +1,5 @@
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -Wpedantic -std=c++98
+CFLAGS = -Wall -Wextra -Werror -Wpedantic -std=c++98 -fsanitize=address -g
 
 SRC_FILES = main.cpp \
 			Bureaucrat.cpp \

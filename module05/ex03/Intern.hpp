@@ -4,6 +4,9 @@
 # include <string>
 
 # include "Form.hpp"
+# include "ShrubberyCreationForm.hpp"
+# include "RobotomyRequestForm.hpp"
+# include "PresidentialPardonForm.hpp"
 
 class Intern {
 
@@ -21,5 +24,10 @@ class Intern {
 		Form*	makeForm(std::string form_name, std::string form_target);
 
 };
+
+Form*	createShrubberyForm(std::string form_target);
+Form*	createRobotomyForm(std::string form_target);
+Form*	createPresidentialForm(std::string form_target);
+
 
 #endif

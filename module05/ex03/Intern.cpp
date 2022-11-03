@@ -27,17 +27,41 @@ Intern&	Intern::operator=(const Intern& other) {
 // Custom member function
 Form*	Intern::makeForm(std::string form_name, std::string form_target) {
 
-	std::string	available_names[] = {"robotomy request", "presidential pardon", "shrubbery creation"};
-	// Form**		available_forms[] = {RobotomyRequestForm, PresidentialPardonForm, ShrubberyCreationForm};
+	std::string	available_names[] = {"RobotomyRequestForm", "PresidentialPardonForm", "ShrubberyCreationForm"};
+	Form*	(*createFormArray[3])(std::string) = {createRobotomyForm, createPresidentialForm, createShrubberyForm};
 
-	for (unsigned int i = 0; i < 4; i++) {
+	for (unsigned int i = 0; i < 3; i++) {
 		if (form_name == available_names[i]) {
-			Form* form = new ShrubberyCreationForm(form_target, form_name);
+			Form* form = (*createFormArray[i])(form_target);
 			std::cout << "Intern creates " << form_name << std::endl;
 			return form;
 		}
-	
 	}
 	std::cout << "Form with name " << form_name << " does not exist" << std::endl;
 	return NULL;
+}
+
+// Form creation member functions
+Form*	createShrubberyForm(std::string form_target) {
+
+	std::cout << "Created ShrubberyCreationForm" << std::endl;
+
+	ShrubberyCreationForm* form = new ShrubberyCreationForm(form_target);
+	return form;
+}
+
+Form*	createRobotomyForm(std::string form_target) {
+
+	std::cout << "Created RobotomyRequestForm" << std::endl;
+
+	RobotomyRequestForm* form = new RobotomyRequestForm(form_target);
+	return form;
+}
+
+Form*	createPresidentialForm(std::string form_target) {
+
+	std::cout << "Created PresidentialPardonForm" << std::endl;
+
+	PresidentialPardonForm* form = new PresidentialPardonForm(form_target);
+	return form;
 }

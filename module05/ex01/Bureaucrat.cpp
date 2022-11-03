@@ -3,8 +3,7 @@
 #include "Form.hpp"
 
 // Constructors and destructors
-Bureaucrat::Bureaucrat() : _name("NoName"), _grade(150) {
-	std::cout << "Bureaucrat Default Constructor called" << std::endl;
+Bureaucrat::Bureaucrat() {
 }
 
 Bureaucrat::Bureaucrat(std::string name, unsigned int grade) : _name(name) {
@@ -23,7 +22,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other.getName()), _grade
 }
 
 Bureaucrat::~Bureaucrat() {
-	std::cout << "Bureaucrat Destructor called for "<< _name << std::endl;
+	std::cout << "Bureaucrat Destructor called" << std::endl;
 }
 
 // Copy Assignment operator overload
