@@ -25,8 +25,6 @@ class ClapTrap {
 		// Copy assignment
 		ClapTrap&	operator=( const ClapTrap& rhs );
 
-
-
 		// Getters
 		std::string		get_name( void ) const;
 		int				get_hit_points( void ) const;
@@ -36,8 +34,6 @@ class ClapTrap {
 		// Setters
 		void			set_hit_points(int amount);
 		void			set_energy_points(int amount);
-
-
 
 		// Member functions
 		void	attack(const std::string& target);

@@ -8,7 +8,8 @@ int main(void) {
 	std::cout << b << std::endl;
 	b.takeDamage(11);
 	std::cout << b << std::endl;
-	b.highFiveGuys();
 	b.attack("ali");
+	std::cout << b << std::endl;
+	b.highFiveGuys();
 	return 0;
 }

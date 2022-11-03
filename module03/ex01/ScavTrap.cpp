@@ -16,8 +16,26 @@ ScavTrap::ScavTrap(std::string name): ClapTrap(name) {
 	this->_attack_damage = 20;
 }
 
+ScavTrap::ScavTrap(const ScavTrap& other) {
+	std::cout << "ScavTrap Copy Constructor called" << std::endl;
+	*this = other;
+}
+
 ScavTrap::~ScavTrap() {
 	std::cout << "ScavTrap destructor called for " << this->_name << std::endl;
+}
+
+// Copy assignment operator overload
+ScavTrap&	ScavTrap::operator=(const ScavTrap& rhs) {
+	std::cout << "ScavTrap Copy Assignment operator called" << std::endl;
+	if (this == &rhs)
+		return *this;
+
+	this->_name = rhs.get_name();
+	this->_hit_points = rhs.get_hit_points();
+	this->_energy_points = rhs.get_energy_points();
+	this->_attack_damage = rhs.get_attack_damage();
+	return *this;
 }
 
 void	ScavTrap::attack(const std::string& target) {

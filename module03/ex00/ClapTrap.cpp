@@ -6,7 +6,7 @@ ClapTrap::ClapTrap():	_name(""),
 						_hit_points(10),
 						_energy_points(10),
 						_attack_damage(0) {
-	std::cout << "Constructor called for " << this->_name << std::endl;
+	std::cout << "ClapTrap Constructor called for " << this->_name << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name):	_name(name),
@@ -14,7 +14,7 @@ ClapTrap::ClapTrap(std::string name):	_name(name),
 										_energy_points(10),
 										_attack_damage(0) {
 	
-	std::cout << "Constructor called for " << this->_name << std::endl;
+	std::cout << "ClapTrap Parametrized Constructor called for " << this->_name << std::endl;
 }
 
 ClapTrap::~ClapTrap() {
@@ -77,7 +77,7 @@ void	ClapTrap::attack(const std::string& target) {
 	if (this->_hit_points == 0 || this->_energy_points == 0)
 		return;
 	this->set_energy_points(this->_energy_points - 1);
-	std::cout << "ClapTrap " << this->_name << " attacks " << target << " causing " << this->_attack_damage << " points of damage!" << std::endl;
+	std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing " << this->_attack_damage << " points of damage!" << std::endl;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount) {

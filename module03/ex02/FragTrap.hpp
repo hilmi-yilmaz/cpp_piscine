@@ -11,7 +11,11 @@ class FragTrap: public ClapTrap {
 		// Constructor and destructor
 		FragTrap();
 		FragTrap(std::string name);
+		FragTrap(const FragTrap& other);
 		~FragTrap();
+
+		// Copy Assignment operator overload
+		FragTrap&	operator=(const FragTrap& rhs);
 
 		void	highFiveGuys(void);
 
