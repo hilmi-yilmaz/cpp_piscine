@@ -9,7 +9,7 @@ int	main(void) {
 	// ShrubberyCreationForm
 	std::cout << "\nShrubberyCreationForm" << std::endl;
 	{
-		std::cout << "Test1: Bureacrat can sign and execute form" << std::endl;
+		std::cout << "Test1: Bureaucrat can sign and execute form" << std::endl;
 		ShrubberyCreationForm form("target");
 		Bureaucrat bureaucrat("bureaucrat", 15);
 		bureaucrat.signForm(form);

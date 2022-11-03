@@ -65,18 +65,18 @@ void	Form::beSigned(const Bureaucrat& bureaucrat) {
 	this->_is_signed = true;
 }
 
-bool	Form::gradeIsLow(Bureaucrat const& executor) const {
+bool	Form::_gradeIsLow(Bureaucrat const& executor) const {
 	if (this->getGradeToExecute() < executor.getGrade()) {
 		return true;
 	}
 	return false;
 }
 
-void	Form::canExecute(Bureaucrat const& executor) const {
+void	Form::_canExecute(Bureaucrat const& executor) const {
 	if (!this->getIsSigned()) {
 		throw FormNotsignedException();
 	}
-	if (this->gradeIsLow(executor)) {
+	if (this->_gradeIsLow(executor)) {
 		throw GradeTooLowException();
 	}
 }

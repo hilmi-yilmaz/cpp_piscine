@@ -40,28 +40,3 @@ Form*	Intern::makeForm(std::string form_name, std::string form_target) {
 	std::cout << "Form with name " << form_name << " does not exist" << std::endl;
 	return NULL;
 }
-
-// Form creation member functions
-Form*	createShrubberyForm(std::string form_target) {
-
-	std::cout << "Created ShrubberyCreationForm" << std::endl;
-
-	ShrubberyCreationForm* form = new ShrubberyCreationForm(form_target);
-	return form;
-}
-
-Form*	createRobotomyForm(std::string form_target) {
-
-	std::cout << "Created RobotomyRequestForm" << std::endl;
-
-	RobotomyRequestForm* form = new RobotomyRequestForm(form_target);
-	return form;
-}
-
-Form*	createPresidentialForm(std::string form_target) {
-
-	std::cout << "Created PresidentialPardonForm" << std::endl;
-
-	PresidentialPardonForm* form = new PresidentialPardonForm(form_target);
-	return form;
-}

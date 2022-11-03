@@ -28,4 +28,7 @@ class PresidentialPardonForm : public Form {
 // Insertion operator overload
 std::ostream&	operator<<(std::ostream& os, const PresidentialPardonForm& form);
 
+// Presidential creation function
+Form*	createPresidentialForm(std::string form_target);
+
 #endif

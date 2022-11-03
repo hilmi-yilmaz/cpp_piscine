@@ -28,4 +28,7 @@ class RobotomyRequestForm : public Form {
 // Insertion operator overload
 std::ostream&	operator<<(std::ostream& os, const RobotomyRequestForm& form);
 
+// Robotomy creation function
+Form*	createRobotomyForm(std::string form_target);
+
 #endif

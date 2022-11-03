@@ -32,7 +32,7 @@ RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 void	RobotomyRequestForm::execute(Bureaucrat const& executor) const {
 	
 	// Will throw an exception if the executor cannot execute the form.
-	this->canExecute(executor);
+	this->_canExecute(executor);
 
 	std::cout << "Makes some drilling noises" << std::endl;
 
@@ -49,4 +49,13 @@ void	RobotomyRequestForm::execute(Bureaucrat const& executor) const {
 std::ostream&	operator<<(std::ostream& os, const RobotomyRequestForm& form) {
 	os << form.getName() << ", form is signed: " << form.getIsSigned() << ", form grade to sign: " << form.getGradeToSign() << ", form grade to execute: " << form.getGradeToExecute() << ", target is: " << form.getTarget() << std::endl;
 	return os;
+}
+
+// Robotomy creation function
+Form*	createRobotomyForm(std::string form_target) {
+
+	std::cout << "Created RobotomyRequestForm" << std::endl;
+
+	RobotomyRequestForm* form = new RobotomyRequestForm(form_target);
+	return form;
 }

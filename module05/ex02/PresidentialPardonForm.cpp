@@ -32,7 +32,7 @@ PresidentialPardonForm&	PresidentialPardonForm::operator=(const PresidentialPard
 void	PresidentialPardonForm::execute(Bureaucrat const& executor) const {
 	
 	// Will throw an exception if the executor cannot execute the form.
-	this->canExecute(executor);
+	this->_canExecute(executor);
 	std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }
 

@@ -25,9 +25,4 @@ class Intern {
 
 };
 
-Form*	createShrubberyForm(std::string form_target);
-Form*	createRobotomyForm(std::string form_target);
-Form*	createPresidentialForm(std::string form_target);
-
-
 #endif

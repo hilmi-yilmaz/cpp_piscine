@@ -27,8 +27,6 @@ class Form {
 		// Custom member functions
 		virtual void	beSigned(const Bureaucrat& bureaucrat);
 		virtual void	execute(Bureaucrat const& executor) const = 0;	// Pure virtual function
-		bool			gradeIsLow(Bureaucrat const& executor) const;
-		void			canExecute(Bureaucrat const& executor) const;
 
 		// Exceptions
 		class GradeTooHighException : public std::exception {
@@ -52,6 +50,9 @@ class Form {
 				}
 		};
 
+	protected:
+		void	_canExecute(Bureaucrat const& executor) const;
+
 	private:
 		const std::string	_name;
 		bool				_is_signed;
@@ -61,6 +62,8 @@ class Form {
 
 		// Copy assignment operator overload
 		Form&	operator=(const Form& other);
+
+		bool	_gradeIsLow(Bureaucrat const& executor) const;
 
 };
 

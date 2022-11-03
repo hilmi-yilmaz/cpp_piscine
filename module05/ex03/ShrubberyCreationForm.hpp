@@ -27,4 +27,7 @@ class ShrubberyCreationForm : public Form {
 // Insertion operator overload
 std::ostream&	operator<<(std::ostream& os, const ShrubberyCreationForm& form);
 
+// Shrubbery creation function
+Form*	createShrubberyForm(std::string form_target);
+
 #endif

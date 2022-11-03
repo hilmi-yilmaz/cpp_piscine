@@ -30,7 +30,7 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationF
 void	ShrubberyCreationForm::execute(Bureaucrat const& executor) const {
 	
 	// Will throw an exception if the executor cannot execute the form.
-	this->canExecute(executor);
+	this->_canExecute(executor);
 
 	// Open file
 	std::ofstream	target_file (this->getTarget() + "_shrubbery");

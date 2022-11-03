@@ -32,7 +32,7 @@ PresidentialPardonForm&	PresidentialPardonForm::operator=(const PresidentialPard
 void	PresidentialPardonForm::execute(Bureaucrat const& executor) const {
 	
 	// Will throw an exception if the executor cannot execute the form.
-	this->canExecute(executor);
+	this->_canExecute(executor);
 	std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }
 
@@ -40,4 +40,13 @@ void	PresidentialPardonForm::execute(Bureaucrat const& executor) const {
 std::ostream&	operator<<(std::ostream& os, const PresidentialPardonForm& form) {
 	os << form.getName() << ", form is signed: " << form.getIsSigned() << ", form grade to sign: " << form.getGradeToSign() << ", form grade to execute: " << form.getGradeToExecute() << ", target is: " << form.getTarget() << std::endl;
 	return os;
+}
+
+// Presidential creation function
+Form*	createPresidentialForm(std::string form_target) {
+
+	std::cout << "Created PresidentialPardonForm" << std::endl;
+
+	PresidentialPardonForm* form = new PresidentialPardonForm(form_target);
+	return form;
 }
