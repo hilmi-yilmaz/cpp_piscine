@@ -32,9 +32,3 @@ Animal&	Animal::operator=(const Animal& other) {
 std::string Animal::getType(void) const {
 	return _type;
 }
-
-// Custom member functions
-void	Animal::makeSound(void) const {
-	std::cout << "Sound from animal class" << std::endl;
-}
-

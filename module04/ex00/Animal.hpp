@@ -22,7 +22,7 @@ class Animal {
 		// Getters
 		std::string	getType(void) const;
 
-		// virtual function.
+		// Custom member functions
 		virtual void	makeSound(void) const;
 };
 
