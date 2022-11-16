@@ -87,12 +87,12 @@ void	assignFromInt(const std::string& input) {
 	std::cout << std::fixed << std::setprecision(1) << "double: " << d << std::endl;
 }
 
-void	assignFromFloat(const std::string& input) {
+// void	assignFromFloat(const std::string& input) {
 
-	float f;
+// 	float f;
 
-	
-}
+
+// }
 
 
 int	main(int argc, char **argv) {
@@ -130,10 +130,10 @@ int	main(int argc, char **argv) {
 	if (type == 'c') {
 		assignFromChar(input);
 	} else if (type == 'i') {
-		assignFromInt(input);
-	} else if (type == 'f') {
-		assignFromFloat(input);
-	}
+		assignFromInt(input); }
+	// } else if (type == 'f') {
+	// 	assignFromFloat(input);
+	// }
 
 
 	// // Variables of all types
