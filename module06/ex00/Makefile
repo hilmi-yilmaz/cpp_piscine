@@ -1,7 +1,7 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -Wpedantic -std=c++98
 
-SRC_FILES = 
+SRC_FILES = main.cpp
 
 HEADER_FILES = 
 
